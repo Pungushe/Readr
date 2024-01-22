@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %} {{ book.title }} {% endblock %}
+
+{% block content %}
+    <h1 class="ml-[-3%] mb-3 text-2xl py-6 px-8">{{ book.title }}</h1>
+    
+    <h3><strong>Статус:</strong> {{ book.get_status_display }}</h3>
+    <h3><strong>Автор:</strong> <a href="{% url 'author:detail' book.author.id %}">{{ book.author.name }}</a></h3>
+    
+    <a href="{% url 'book:edit' book.id %}" class="inline-block mt-6 py-4 px-6 bg-blue-500 text-white">Редактировать книгу</a>
+    <a href="{% url 'book:delete' book.id %}" class="inline-block mt-6 py-4 px-6 bg-red-600 text-white">Удалить книгу</a>
+{% endblock %}

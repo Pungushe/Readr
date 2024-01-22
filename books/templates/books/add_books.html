@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %} Добавить книгу {% endblock  %}
+
+{% block content %}
+    <h1 class="text-2xl text-center">Добавляем книгу</h1>
+
+    <form action="." method="post" class="mt-8">
+        {% csrf_token %}
+            {% for field in form %}
+                <div class="mb-4">
+                    <label for="{{ field.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">
+                        {{ field.label }}
+                    </label>
+                    {{ field }}
+                </div>
+            {% endfor %}
+        <button class="mt-6 py-4 px-6 bg-green-500 hover:bg-green-600 text-white" type="submit">Подтвердить</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %} {{ author.name }} {% endblock %}
+
+{% block content %}
+<div class="flex">
+    <h2 class="mb-3 text-2xl py-6 px-8">{{ author.name }} </h2>
+</div>
+
+    {% if author.books.count %}
+        {% for book in author.books.all %}
+            <div class="mb-4 grid grid-cols-3 gap-4 bg-slate-50">
+                <h2>
+                    <a href="{% url 'book:detail' book.pk %}">
+                        {{ book.title }}
+                    </a>    
+                </h2>
+
+                <p>{{ book.get_status_display }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>У этого автора нет ни одной книги</p>
+    {% endif %}
+{% endblock %}

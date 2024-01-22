@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <nav class="max-w-auto py-6 px-8 flex justify-between bg-slate-800">
+            <a href="{% url 'core:frontpage' %}" class="text-white font-bold text-2xl">Readr</a>
+            
+            <div class="space-x-4">
+                <a href="{% url 'book:main' %}" class="text-white">Книги</a>
+                <a href="{% url 'author:index' %}" class="text-white">Авторы</a>
+                
+                <a href="{% url 'book:add' %}" class="py-4 px-6 bg-sky-700 text-white">Добавить книгу</a>
+            </div>
+        </nav>
+
+        <div class="max-w-4xl mx-auto py-6 px-6">
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>
